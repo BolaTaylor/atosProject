@@ -56,8 +56,10 @@ public class CustomerDaoImpl implements CustomerDao{
     }
     @Override
     public Customer getCustomer(Customer customer) {
-
-        return null;
+        if(customerList.contains(customer))
+            return customer;
+        else
+            return null;
     }
 
     @Override
