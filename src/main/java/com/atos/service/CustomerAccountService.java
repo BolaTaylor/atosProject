@@ -20,8 +20,8 @@ public class CustomerAccountService {
     public Customer getCustomer(Customer customer){
         return customerDao.getCustomer(customer);
     }
-    public void addAccounts(Customer customer){
-        customerDao.addCustomer(customer);
+    public Customer addAccounts(Customer customer){
+       return customerDao.addCustomer(customer);
     }
 
     public void removeCustomer(Customer customer){

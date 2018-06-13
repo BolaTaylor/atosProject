@@ -19,25 +19,25 @@ public class CustomerDaoImpl implements CustomerDao{
 
     public CustomerDaoImpl() {
         if (!checkForCustomer(customer)) {
-            customer.setId("ATOS_1");
+            customer.setId(generateRandomId());
             customer.setFirstName("John");
             customer.setSurname("Taylor");
             customerList.add(customer);
         }
         if (!checkForCustomer(customerOne)) {
-            customerOne.setId("ATOS_2");
+            customerOne.setId(generateRandomId());
             customerOne.setFirstName("Mary");
             customerOne.setSurname("Williams");
             customerList.add(customerOne);
         }
 
         if (!checkForCustomer(customerTwo)) {
-            customerTwo.setId("ATOS_3");
+            customerTwo.setId(generateRandomId());
             customerTwo.setFirstName("Fred");
             customerTwo.setSurname("Peterson");
         }
         if (!checkForCustomer(customerThree)) {
-            customerThree.setId("ATOS_4");
+            customerThree.setId(generateRandomId());
             customerThree.setFirstName("Peter");
             customerThree.setSurname("Bauer");
             customerList.add(customerThree);
@@ -76,7 +76,7 @@ public class CustomerDaoImpl implements CustomerDao{
     public boolean removeCustomer(Customer customer) {
         for(Customer customerObject: customerList){
             if(customerObject.getId().equalsIgnoreCase(customer.getId())){
-                customerList.remove(customer);
+                customerList.remove(customerObject);
                 return true;
                 }
         }
