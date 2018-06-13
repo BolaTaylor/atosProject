@@ -1,6 +1,5 @@
-package com.atos.resource;
+package com.atos.controller;
 
-import com.atos.dao.CustomerDao;
 import com.atos.model.Customer;
 import com.atos.service.CustomerAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +17,16 @@ import javax.ws.rs.core.Response;
 @RequestMapping("/customers")
 public class CustomerController {
 
-    private final CustomerDao customerDao;
-
     @Autowired
-    public CustomerController(CustomerDao customerDao) {
-        this.customerDao = customerDao;
-    }
+    private final CustomerAccountService customerAccountService ;
 
+    public CustomerController(CustomerAccountService customerAccountService) {
+        this.customerAccountService = customerAccountService;
+    }
 
     @RequestMapping(path = "/get", method = RequestMethod.GET)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllCustomer(){
-        CustomerAccountService customerAccountService = new CustomerAccountService();
         return Response.ok(customerAccountService.listAllCustomers()).build();
       }
 
@@ -37,7 +34,6 @@ public class CustomerController {
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addUserAccount(@Valid Customer customer){
-        CustomerAccountService customerAccountService = new CustomerAccountService();
         customerAccountService.addAccounts(customer);
         return Response.ok("Customer has been successfully added").build();
     }
@@ -46,7 +42,6 @@ public class CustomerController {
     @RequestMapping(path = "/remove", method = RequestMethod.DELETE)
     @Produces(MediaType.APPLICATION_JSON)
     public Response removeCustomerAccount(@Valid Customer customer){
-        CustomerAccountService customerAccountService = new CustomerAccountService();
         customerAccountService.removeCustomer(customer);
         return Response.ok("account has been successfully deleted").build();
     }
