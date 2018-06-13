@@ -1,4 +1,4 @@
-package com.atos.main;
+package com.atos;
 
 import com.atos.dao.CustomerDao;
 import com.atos.dao.CustomerDaoImpl;
@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
+
 public class CustomerAccountApplication {
 
 
